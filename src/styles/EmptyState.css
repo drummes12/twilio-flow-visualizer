@@ -1,0 +1,80 @@
+/* Estilos para el componente EmptyState - Tema Twilio Minimalista */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+  background: rgba(26, 31, 46, 0.6);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  margin: 20px 0;
+  min-height: 200px;
+  box-shadow: var(--shadow-subtle);
+}
+
+.empty-state-icon {
+  margin-bottom: 16px;
+  color: var(--text-secondary);
+}
+
+.empty-state-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 8px 0;
+}
+
+.empty-state-message {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0 0 20px 0;
+  max-width: 400px;
+}
+
+.empty-state-action {
+  margin-top: 8px;
+}
+
+/* Variantes */
+.empty-state.compact {
+  padding: 20px;
+  min-height: 120px;
+}
+
+.empty-state.error {
+  background: rgba(244, 67, 54, 0.1);
+  backdrop-filter: blur(8px);
+  border-color: rgba(244, 67, 54, 0.3);
+}
+
+.empty-state.error .empty-state-icon {
+  color: #f44336;
+}
+
+.empty-state.warning {
+  background: rgba(255, 152, 0, 0.1);
+  backdrop-filter: blur(8px);
+  border-color: rgba(255, 152, 0, 0.3);
+}
+
+.empty-state.warning .empty-state-icon {
+  color: #ff9800;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .empty-state {
+    padding: 30px 15px;
+  }
+  
+  .empty-state-title {
+    font-size: 16px;
+  }
+  
+  .empty-state-message {
+    font-size: 13px;
+  }
+}

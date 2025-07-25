@@ -1,0 +1,161 @@
+/* Variables CSS para el tema Twilio Minimalista */
+:root {
+  --bg-primary: #0d122b;
+  --bg-secondary: #1a1f2e;
+  --bg-card: rgba(26, 31, 46, 0.8);
+  --text-primary: #f4f4f6;
+  --text-secondary: #a0a9b8;
+  --accent-primary: #f22f46;
+  --accent-secondary: #008cff;
+  --accent-tertiary: #9e9eff;
+  --border-color: rgba(160, 169, 184, 0.2);
+  --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-glow-subtle: 0 0 10px rgba(242, 47, 70, 0.1);
+  --twilio-red: #f22f46;
+  --twilio-blue: #008cff;
+  --twilio-purple: #9e9eff;
+  --twilio-dark: #0d122b;
+}
+
+/* Estilos globales - Dark Mode Futurista */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  overflow: hidden;
+}
+
+/* Utilidades */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.btn {
+  background: var(--accent-primary);
+  border: 1px solid var(--accent-primary);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-subtle);
+}
+
+.btn:hover {
+  background: #e02a42;
+  box-shadow: var(--shadow-glow-subtle);
+}
+
+.btn:disabled {
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn-secondary {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+
+.btn-secondary:hover {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border-color: var(--accent-tertiary);
+}
+
+.btn-danger {
+  background: var(--accent-primary);
+  border: 1px solid var(--accent-primary);
+  color: white;
+}
+
+.btn-danger:hover {
+  background: #d32f2f;
+}
+
+/* Estilos de formularios con tema Twilio Minimalista */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-primary);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.form-control:focus {
+  border-color: var(--accent-primary);
+  outline: 0;
+  box-shadow: var(--shadow-glow-subtle);
+  background: var(--bg-secondary);
+}
+
+.form-control::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+/* Estilos de alertas con tema Twilio Minimalista */
+.alert {
+  padding: 12px 16px;
+  margin: 16px 0;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  box-shadow: var(--shadow-subtle);
+  font-weight: 400;
+}
+
+.alert-success {
+  color: #4caf50;
+  background: rgba(76, 175, 80, 0.1);
+  border-color: rgba(76, 175, 80, 0.3);
+}
+
+.alert-danger {
+  color: var(--twilio-red);
+  background: rgba(242, 47, 70, 0.1);
+  border-color: rgba(242, 47, 70, 0.3);
+}
+
+.alert-warning {
+  color: #ffc107;
+  background: rgba(255, 193, 7, 0.1);
+  border-color: rgba(255, 193, 7, 0.3);
+}
+
+.alert-info {
+  color: var(--twilio-blue);
+  background: rgba(0, 140, 255, 0.1);
+  border-color: rgba(0, 140, 255, 0.3);
+}

@@ -1,0 +1,161 @@
+/* Nodos del flujo con tema Twilio Minimalista */
+.studio-flow-node {
+  padding: 16px;
+  font-size: 12px;
+  color: #e0e6ed;
+  position: relative;
+  background: #1a1d29;
+  border: 1px solid #2d3748;
+  border-radius: 8px;
+  min-width: 180px;
+  transition: border-color 0.2s ease;
+}
+
+.studio-flow-node:hover {
+  border-color: #4a5568;
+}
+
+.studio-flow-node.selected {
+  border-color: #f22f46;
+  border-width: 2px;
+}
+
+.node-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.node-icon {
+  width: 28px;
+  height: 28px;
+  margin-right: 10px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-primary);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  color: white;
+  font-size: 14px;
+}
+
+.node-content {
+  padding: 4px 0;
+  text-align: center;
+}
+
+/* Nombre amigable del widget (más pequeño) */
+.node-type-friendly {
+  font-size: 10px;
+  color: #b8c5d1;
+  margin-bottom: 6px;
+  text-align: center;
+  font-weight: 400;
+}
+
+/* Etiqueta del nodo (label) */
+.node-label {
+  font-size: 12px;
+  color: #ffffff;
+  margin-bottom: 6px;
+  text-align: center;
+  word-wrap: break-word;
+  font-weight: 500;
+}
+
+/* Nombre técnico del widget (más grande y prominente) */
+.node-type-small {
+  font-size: 8px;
+  color: #e0e6ed;
+  text-align: center;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 12px;
+}
+
+/* Estilos específicos por tipo de widget - Tema Minimalista */
+/* Flow Control */
+.studio-flow-node[data-type='trigger'] .node-icon,
+.studio-flow-node[data-type='split-based-on'] .node-icon,
+.studio-flow-node[data-type='set-variables'] .node-icon {
+  background: #f22f46;
+  color: white;
+}
+
+/* Voice Widgets */
+.studio-flow-node[data-type='say-play'] .node-icon,
+.studio-flow-node[data-type='gather-input-on-call'] .node-icon,
+.studio-flow-node[data-type='connect-call-to'] .node-icon,
+.studio-flow-node[data-type='make-outgoing-call'] .node-icon,
+.studio-flow-node[data-type='record-voicemail'] .node-icon,
+.studio-flow-node[data-type='call-recording'] .node-icon,
+.studio-flow-node[data-type='enqueue-call'] .node-icon,
+.studio-flow-node[data-type='capture-payments'] .node-icon,
+.studio-flow-node[data-type='fork-stream'] .node-icon,
+.studio-flow-node[data-type='connect-virtual-agent'] .node-icon {
+  background: #00d4ff;
+  color: white;
+}
+
+/* Messaging Widgets */
+.studio-flow-node[data-type='send-message'] .node-icon,
+.studio-flow-node[data-type='send-and-wait-for-reply'] .node-icon {
+  background: #9e9eff;
+  color: white;
+}
+
+/* Tools & Code Execution */
+.studio-flow-node[data-type='run-function'] .node-icon,
+.studio-flow-node[data-type='http-request'] .node-icon,
+.studio-flow-node[data-type='twiml-redirect'] .node-icon {
+  background: #00b894;
+  color: white;
+}
+
+/* Connect Other Products */
+.studio-flow-node[data-type='send-to-flex'] .node-icon,
+.studio-flow-node[data-type='search-for-a-profile'] .node-icon {
+  background: #008cff;
+  color: white;
+}
+
+/* Subflows */
+.studio-flow-node[data-type='run-subflow'] .node-icon {
+  background: #6c5ce7;
+  color: white;
+}
+
+/* Estilos para los handles (puntos de conexión) */
+.react-flow__handle {
+  width: 8px;
+  height: 8px;
+  background-color: #0263e0;
+  border: 2px solid white;
+}
+
+.react-flow__handle-top {
+  top: -4px;
+}
+
+.react-flow__handle-bottom {
+  bottom: -4px;
+}
+
+/* Estilos para las aristas (conexiones) */
+.react-flow__edge-path {
+  stroke-width: 2;
+}
+
+/* Estilos para el minimap */
+.react-flow__minimap {
+  border-radius: 4px;
+  overflow: hidden;
+}

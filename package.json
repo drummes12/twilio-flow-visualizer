@@ -1,0 +1,37 @@
+{
+  "name": "pg-studio-flow-visualizer",
+  "version": "0.1.0",
+  "description": "Visualizador y editor de Twilio Studio Flows directamente en el editor de código",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "vite",
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "jest"
+  },
+  "keywords": [
+    "twilio",
+    "studio",
+    "flow",
+    "visualizer",
+    "editor"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@uiw/react-json-view": "2.0.0-alpha.33",
+    "@xyflow/react": "^12.8.2",
+    "d3": "^7.8.5",
+    "json-edit-react": "^1.28.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.15.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.7.0",
+    "jest": "^29.6.2",
+    "vite": "^7.0.6"
+  }
+}
