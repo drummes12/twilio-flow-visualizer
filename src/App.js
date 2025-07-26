@@ -322,14 +322,14 @@ const App = () => {
       onDrop={handleDrop}
     >
       <Header 
-        onExport={handleExportFlow} 
-        onImport={handleImportFlow}
-        onSaveTemp={handleSaveTemp}
-        onSaveChanges={handleSaveChanges}
-        onDeleteFlow={handleDeleteFlow}
-        flowSelected={!!selectedFlow}
-        hasCurrentFlow={!!currentFlowId}
-      />
+          onExport={handleExportFlow} 
+          onImport={handleImportFlow}
+          onSaveTemp={handleSaveTemp}
+          onSaveChanges={handleSaveChanges}
+          onDeleteFlow={handleDeleteFlow}
+          flowSelected={!!selectedFlow}
+          hasCurrentFlow={!!currentFlowId}
+        />
       <div className="main-content">
         <Sidebar
           onFlowSelect={handleFlowSelect}

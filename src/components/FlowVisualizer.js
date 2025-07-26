@@ -91,7 +91,8 @@ const FlowVisualizerContent = ({
         currentEdges.map(edge => ({
           ...edge,
           style: { stroke: '#888', strokeWidth: 2 },
-          animated: true
+          animated: true,
+          className: 'edge-normal'
         }))
       )
       return
@@ -106,7 +107,8 @@ const FlowVisualizerContent = ({
           style: isConnected 
             ? { stroke: '#f22f46', strokeWidth: 3, strokeDasharray: '5,5' }
             : { stroke: '#444', strokeWidth: 1, opacity: 0.3 },
-          animated: isConnected
+          animated: isConnected,
+          className: isConnected ? 'edge-connected' : 'edge-disconnected'
         }
       })
     )

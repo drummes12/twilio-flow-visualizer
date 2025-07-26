@@ -347,7 +347,7 @@
 /* Flow Visualizer - Dark Mode Twilio */
 .flow-visualizer {
   flex: 1;
-  padding: 25px;
+  padding: 12px;
   overflow: auto;
   position: relative;
   background: linear-gradient(
@@ -640,6 +640,61 @@
   background-color: #0255c2;
 }
 
+/* Botones específicos para Exportar e Importar JSON */
+.btn-export {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  border: 2px solid #059669;
+  box-shadow: 0 3px 10px rgba(16, 185, 129, 0.3);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 10px 16px;
+}
+
+.btn-export .icon {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.btn-export:hover:not(:disabled) {
+  background: linear-gradient(135deg, #059669, #047857);
+  box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-import {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  border: 2px solid #2563eb;
+  box-shadow: 0 3px 10px rgba(59, 130, 246, 0.3);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  border-radius: 8px !important;
+  padding: 10px 16px !important;
+}
+
+.btn-import .icon {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.btn-import:hover:not(:disabled) {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+  transform: translateY(-2px);
+}
+
 .btn-secondary {
   background-color: rgba(255, 255, 255, 0.2);
   color: white;
@@ -668,38 +723,63 @@
 }
 
 .btn-reset {
-  background: linear-gradient(135deg, #dc3545, #c82333);
-  color: white;
-  border: 1px solid #dc3545;
-  box-shadow: 0 4px 15px rgba(220, 53, 69, 0.4);
+  background: linear-gradient(135deg, #dc3545, #c82333) !important;
+  color: white !important;
+  border: 2px solid #dc3545 !important;
+  box-shadow: 0 3px 10px rgba(220, 53, 69, 0.3) !important;
   transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  border-radius: 8px !important;
+  padding: 10px 16px !important;
+}
+
+.btn-reset .icon {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
 }
 
 .btn-reset:hover:not(:disabled) {
-  background: linear-gradient(135deg, #c82333, #bd2130);
+  background: linear-gradient(135deg, #c82333, #bd2130) !important;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(220, 53, 69, 0.5);
+  box-shadow: 0 5px 15px rgba(220, 53, 69, 0.4) !important;
 }
 
 .btn-save {
-  background: linear-gradient(135deg, #28a745, #218838);
-  color: white;
-  border: 1px solid #28a745;
-  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
+  background: linear-gradient(135deg, #28a745, #218838) !important;
+  color: white !important;
+  border: 2px solid #28a745 !important;
+  box-shadow: 0 3px 10px rgba(40, 167, 69, 0.3) !important;
   transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  border-radius: 8px !important;
+  padding: 10px 16px !important;
+}
+
+.btn-save .icon {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
 }
 
 .btn-save:hover:not(:disabled) {
-  background: linear-gradient(135deg, #218838, #1e7e34);
+  background: linear-gradient(135deg, #218838, #1e7e34) !important;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(40, 167, 69, 0.5);
+  box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4) !important;
 }
 
 .btn-save:disabled {
-  background: rgba(108, 117, 125, 0.6);
-  border-color: rgba(108, 117, 125, 0.4);
-  box-shadow: none;
+  background: rgba(108, 117, 125, 0.6) !important;
+  border-color: rgba(108, 117, 125, 0.4) !important;
+  box-shadow: none !important;
   transform: none;
+  opacity: 0.6;
 }
 
 /* Responsive */

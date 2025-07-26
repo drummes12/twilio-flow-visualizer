@@ -43,52 +43,6 @@ body {
   padding: 0 15px;
 }
 
-.btn {
-  background: var(--accent-primary);
-  border: 1px solid var(--accent-primary);
-  color: white;
-  padding: 8px 16px;
-  border-radius: 6px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: var(--shadow-subtle);
-}
-
-.btn:hover {
-  background: #e02a42;
-  box-shadow: var(--shadow-glow-subtle);
-}
-
-.btn:disabled {
-  background: var(--bg-secondary);
-  color: var(--text-secondary);
-  cursor: not-allowed;
-  box-shadow: none;
-}
-
-.btn-secondary {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  color: var(--text-secondary);
-}
-
-.btn-secondary:hover {
-  background: var(--bg-card);
-  color: var(--text-primary);
-  border-color: var(--accent-tertiary);
-}
-
-.btn-danger {
-  background: var(--accent-primary);
-  border: 1px solid var(--accent-primary);
-  color: white;
-}
-
-.btn-danger:hover {
-  background: #d32f2f;
-}
-
 /* Estilos de formularios con tema Twilio Minimalista */
 .form-group {
   margin-bottom: 15px;

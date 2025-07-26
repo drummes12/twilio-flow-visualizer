@@ -160,6 +160,32 @@
   pointer-events: all;
 }
 
+/* Estilos para el fondo del texto de las aristas */
+.react-flow__edge-textbg {
+  transition: all 0.2s ease;
+}
+
+/* Estilos para aristas conectadas */
+.edge-connected .react-flow__edge-textbg {
+  stroke: #f22f46;
+  stroke-width: 2;
+  fill: rgba(52, 10, 15, 0.8);
+}
+
+/* Estilos para aristas desconectadas */
+.edge-disconnected .react-flow__edge-textbg {
+  stroke: rgba(68, 68, 68, 0.3);
+  stroke-width: 1;
+  fill: rgba(68, 68, 68, 0.05);
+}
+
+/* Estilos para aristas normales */
+.edge-normal .react-flow__edge-textbg {
+  stroke: rgba(136, 136, 136, 0.2);
+  stroke-width: 1;
+  fill: rgba(136, 136, 136, 0.05);
+}
+
 .react-flow__edge-textbg {
   fill: rgba(26, 31, 46, 0.95);
   stroke: rgba(255, 255, 255, 0.1);

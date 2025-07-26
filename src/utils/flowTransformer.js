@@ -145,7 +145,7 @@ export const transformFlowToNodesAndEdges = (flowData, useAutoLayout = true) => 
 
   // Crear nodos a partir de los estados del flujo
   flowData.states.forEach((state) => {
-    const { name, type, properties } = state;
+    const { name, type, properties, transitions } = state;
     const originalOffset = properties?.offset || { x: 0, y: 0 };
     
     // Usar posición automática o la original
@@ -160,7 +160,9 @@ export const transformFlowToNodesAndEdges = (flowData, useAutoLayout = true) => 
       position: position,
       data: { 
         label: name,
-        type: type
+        type: type,
+        properties: properties || {},
+        transitions: transitions || []
       }
     };
     
