@@ -12,6 +12,12 @@ import {
 } from '@xyflow/react'
 import '@xyflow/react/dist/style.css'
 import { transformFlowToNodesAndEdges } from '../utils/flowTransformer'
+import {
+  getBackgroundConfig,
+  shouldShowMinimap,
+  shouldHighlightEdges,
+  getOptimizationLevel
+} from '../utils/performanceConfig'
 import FlowToolbar from './FlowToolbar'
 import NodeDetails from './NodeDetails'
 import Spinner from './Spinner'
@@ -55,11 +61,12 @@ const FlowVisualizerContent = ({
     }
 
     try {
-      const { nodes: transformedNodes, edges: transformedEdges } = transformFlowToNodesAndEdges(flowData, useAutoLayout)
-      
+      const { nodes: transformedNodes, edges: transformedEdges } =
+        transformFlowToNodesAndEdges(flowData, useAutoLayout)
+
       setNodes(transformedNodes)
       setEdges(transformedEdges)
-      
+
       // Ajustar la vista después de renderizar
       setTimeout(() => {
         if (reactFlowInstance && transformedNodes.length > 0) {
@@ -77,21 +84,30 @@ const FlowVisualizerContent = ({
     }
   }, [flowData, useAutoLayout, reactFlowInstance, setNodes, setEdges])
 
+  // Efecto para cerrar NodeDetails cuando cambie el flujo
+  useEffect(() => {
+    setSelectedNode(null)
+    setShowNodeDetails(false)
+  }, [flowData])
+
   const handleNodeClick = (event, node) => {
     // Solo mostrar detalles del nodo, no abrir el editor directamente
     setSelectedNode(node)
     setShowNodeDetails(true)
   }
 
-  // Efecto para resaltar las conexiones del nodo seleccionado
+  // Efecto para resaltar las conexiones del nodo seleccionado (optimizado)
   useEffect(() => {
+    // Solo actualizar si el rendimiento lo permite
+    if (!shouldHighlightEdges(nodes.length)) return
+
     if (!selectedNode) {
       // Restaurar estilos normales de todas las aristas
-      setEdges(currentEdges => 
-        currentEdges.map(edge => ({
+      setEdges((currentEdges) =>
+        currentEdges.map((edge) => ({
           ...edge,
           style: { stroke: '#888', strokeWidth: 2 },
-          animated: true,
+          animated: false, // Desactivar animaciones para mejor rendimiento
           className: 'edge-normal'
         }))
       )
@@ -99,20 +115,21 @@ const FlowVisualizerContent = ({
     }
 
     // Resaltar aristas conectadas al nodo seleccionado
-    setEdges(currentEdges => 
-      currentEdges.map(edge => {
-        const isConnected = edge.source === selectedNode.id || edge.target === selectedNode.id
+    setEdges((currentEdges) =>
+      currentEdges.map((edge) => {
+        const isConnected =
+          edge.source === selectedNode.id || edge.target === selectedNode.id
         return {
           ...edge,
-          style: isConnected 
-            ? { stroke: '#f22f46', strokeWidth: 3, strokeDasharray: '5,5' }
+          style: isConnected
+            ? { stroke: '#f22f46', strokeWidth: 3 }
             : { stroke: '#444', strokeWidth: 1, opacity: 0.3 },
-          animated: isConnected,
+          animated: false, // Desactivar animaciones para mejor rendimiento
           className: isConnected ? 'edge-connected' : 'edge-disconnected'
         }
       })
     )
-  }, [selectedNode, setEdges])
+  }, [selectedNode, setEdges, nodes.length])
 
   const handleCloseNodeDetails = () => {
     setShowNodeDetails(false)
@@ -206,10 +223,17 @@ const FlowVisualizerContent = ({
           nodesDraggable={false}
           nodesConnectable={false}
           elementsSelectable={true}
+          preventScrolling={false}
+          zoomOnDoubleClick={false}
+          panOnDrag={true}
+          selectNodesOnDrag={false}
         >
-          <Background color='#f8f8f8' gap={16} />
-          <Controls showInteractive={false} />
-          {showMinimap && (
+          <Background
+            color='#f8f8f8'
+            gap={getBackgroundConfig(nodes.length).gap}
+            size={getBackgroundConfig(nodes.length).size}
+          />
+          {shouldShowMinimap(nodes.length, showMinimap) && (
             <MiniMap
               nodeStrokeColor={(n) => {
                 if (n.data?.label === selectedWidget?.name)
@@ -242,6 +266,16 @@ const FlowVisualizerContent = ({
             onClose={handleCloseNodeDetails}
             onEdit={handleEditNode}
           />
+        )}
+
+        {/* Indicador de optimización para flujos grandes */}
+        {getOptimizationLevel(nodes.length) !== 'normal' && (
+          <div className='performance-indicator'>
+            <span className='performance-icon'>⚡</span>
+            <span className='performance-text'>
+              Modo optimizado activo ({nodes.length} widgets)
+            </span>
+          </div>
         )}
       </div>
     </div>

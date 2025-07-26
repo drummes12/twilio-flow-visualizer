@@ -27,14 +27,13 @@
 
 .react-flow__node {
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: border-color 0.15s ease;
   border-radius: 8px;
   border: 2px solid transparent;
 }
 
 /* Nodos seleccionados con tema Twilio Minimalista */
 .react-flow__node.selected {
-  box-shadow: var(--shadow-glow-subtle);
   border: 2px solid var(--accent-primary) !important;
   background: rgba(26, 31, 46, 0.9);
   transform: translateY(-1px);
@@ -42,10 +41,7 @@
 
 .react-flow__node:hover {
   background: rgba(26, 31, 46, 0.85);
-  box-shadow: var(--shadow-glow-subtle);
-  border: 1px solid var(--accent-primary);
   border-color: var(--accent-primary);
-  transform: translateY(-1px);
 }
 
 /* Aristas con tema Twilio Minimalista */
@@ -71,18 +67,16 @@
 
 /* Controles con tema Twilio Minimalista */
 .react-flow__controls {
-  background: rgba(26, 31, 46, 0.85);
-  backdrop-filter: blur(12px);
+  background: rgba(26, 31, 46, 0.95);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
-  box-shadow: var(--shadow-subtle);
 }
 
 .react-flow__controls-button {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: var(--text-secondary);
-  transition: all 0.2s ease;
+  transition: background-color 0.15s ease;
   border-radius: 6px;
   margin: 2px;
   box-sizing: content-box;
@@ -111,11 +105,9 @@
 
 /* Minimap con tema Twilio Minimalista */
 .react-flow__minimap {
-  background: rgba(26, 31, 46, 0.85);
-  backdrop-filter: blur(12px);
+  background: rgba(26, 31, 46, 0.95);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
-  box-shadow: var(--shadow-subtle);
 }
 
 .react-flow__minimap-mask {
@@ -162,7 +154,7 @@
 
 /* Estilos para el fondo del texto de las aristas */
 .react-flow__edge-textbg {
-  transition: all 0.2s ease;
+  transition: none;
 }
 
 /* Estilos para aristas conectadas */
@@ -194,6 +186,44 @@
   ry: 4;
 }
 
+/* Indicador de rendimiento */
+.performance-indicator {
+  position: absolute;
+  top: 64px;
+  right: 10px;
+  background: rgba(0, 212, 255, 0.3);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 1000;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.performance-icon {
+  font-size: 12px;
+  animation: pulse 2s infinite;
+}
+
+.performance-text {
+  white-space: nowrap;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
 /* Estilos responsivos */
 @media (max-width: 768px) {
   .flow-visualizer {
@@ -206,5 +236,12 @@
 
   .react-flow__controls {
     display: none;
+  }
+  
+  .performance-indicator {
+    top: 8px;
+    right: 8px;
+    font-size: 10px;
+    padding: 6px 10px;
   }
 }
