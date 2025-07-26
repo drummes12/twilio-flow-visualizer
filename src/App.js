@@ -4,6 +4,7 @@ import Sidebar from './components/Sidebar';
 import FlowVisualizer from './components/FlowVisualizer';
 import WidgetEditor from './components/WidgetEditor';
 import ImportFlow from './components/ImportFlow';
+import JSONEditor from './components/JSONEditor';
 import Alert from './components/Alert';
 import { exportFlowToJson, importFlowFromJson, validateFlowStructure } from './services/flowService';
 import { getFlowData } from './data/sampleFlows';
@@ -21,6 +22,7 @@ const App = () => {
   const [savedFlows, setSavedFlows] = useState([]);
   const [isDragOver, setIsDragOver] = useState(false);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  const [showJSONEditor, setShowJSONEditor] = useState(false);
 
   const handleFlowSelect = (flow) => {
     setSelectedFlow(flow);
@@ -135,6 +137,39 @@ const App = () => {
   
   const handleImportCancel = () => {
     setShowImportModal(false);
+  };
+  
+  const handleOpenJSONEditor = () => {
+    setShowJSONEditor(true);
+  };
+  
+  const handleJSONEditorSave = (updatedFlowData) => {
+    setFlowData(updatedFlowData);
+    
+    // Si es un flujo guardado, actualizar automáticamente
+    if (currentFlowId) {
+      try {
+        localStorageService.updateFlow(currentFlowId, updatedFlowData);
+        addAlert({
+          type: 'success',
+          message: 'Flujo actualizado desde el editor JSON',
+        });
+      } catch (error) {
+        addAlert({
+          type: 'error',
+          message: 'Error al guardar los cambios del JSON',
+        });
+      }
+    } else {
+      addAlert({
+        type: 'success',
+        message: 'Flujo actualizado desde el editor JSON',
+      });
+    }
+  };
+  
+  const handleJSONEditorClose = () => {
+    setShowJSONEditor(false);
   };
   
   // Sistema de alertas
@@ -324,6 +359,7 @@ const App = () => {
       <Header 
           onExport={handleExportFlow} 
           onImport={handleImportFlow}
+          onOpenJSONEditor={handleOpenJSONEditor}
           onSaveTemp={handleSaveTemp}
           onSaveChanges={handleSaveChanges}
           onDeleteFlow={handleDeleteFlow}
@@ -360,6 +396,15 @@ const App = () => {
         <ImportFlow 
           onImportComplete={handleImportComplete}
           onCancel={handleImportCancel}
+        />
+      )}
+      
+      {/* Editor JSON */}
+      {showJSONEditor && (
+        <JSONEditor 
+          flowData={flowData}
+          onSave={handleJSONEditorSave}
+          onClose={handleJSONEditorClose}
         />
       )}
       

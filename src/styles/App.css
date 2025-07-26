@@ -478,8 +478,6 @@
   color: #f22f46;
   border: 1px solid rgba(242, 47, 70, 0.3);
   border-radius: 50%;
-  width: 32px;
-  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -692,6 +690,32 @@
 .btn-import:hover:not(:disabled) {
   background: linear-gradient(135deg, #2563eb, #1d4ed8);
   box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-json-editor {
+  background: linear-gradient(135deg, #f22f46, #d91e36);
+  color: white;
+  border: 2px solid #d91e36;
+  box-shadow: 0 3px 10px rgba(242, 47, 70, 0.3);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 10px 16px;
+}
+
+.btn-json-editor .icon {
+  width: 16px;
+  height: 16px;
+}
+
+.btn-json-editor:hover:not(:disabled) {
+  background: linear-gradient(135deg, #d91e36, #c01a2f);
+  box-shadow: 0 5px 15px rgba(242, 47, 70, 0.4);
   transform: translateY(-2px);
 }
 
