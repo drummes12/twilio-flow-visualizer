@@ -3,7 +3,10 @@ import React from 'react';
 const Header = ({ onExport, onImport, onOpenJSONEditor, flowSelected }) => {
   return (
     <header className='header'>
-      <h1>Twilio Studio Flow Visualizer</h1>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+        <img src='/icon.svg' alt='logo' style={{ height: '40px' }} />
+        <h1>Twilio Studio Flow Visualizer</h1>
+      </div>
       <div className='header-actions'>
         <button
           className='btn btn-json-editor'
