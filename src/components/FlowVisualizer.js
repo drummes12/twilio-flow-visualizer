@@ -32,7 +32,8 @@ const nodeTypes = {
 const FlowVisualizerContent = ({
   flowData,
   onWidgetSelect,
-  selectedWidget
+  selectedWidget,
+  onNodeUpdate
 }) => {
   const [nodes, setNodes, onNodesChange] = useNodesState([])
   const [edges, setEdges, onEdgesChange] = useEdgesState([])
@@ -146,6 +147,22 @@ const FlowVisualizerContent = ({
     if (widget) {
       onWidgetSelect(widget)
       // Mantener el panel de detalles abierto
+    }
+  }
+
+  const handleUpdateNode = (updatedNode) => {
+    // Actualizar el nodo seleccionado si es el que se está editando
+    setSelectedNode((currentSelected) => {
+      if (currentSelected && currentSelected.id === updatedNode.id) {
+        return updatedNode
+      }
+      return currentSelected
+    })
+
+    // Usar la función onNodeUpdate que viene de App.js para persistir los cambios
+    // Los nodos se actualizarán automáticamente cuando flowData cambie
+    if (onNodeUpdate) {
+      onNodeUpdate(updatedNode)
     }
   }
 
@@ -263,8 +280,10 @@ const FlowVisualizerContent = ({
         {showNodeDetails && selectedNode && (
           <NodeDetails
             node={selectedNode}
+            availableNodes={nodes}
             onClose={handleCloseNodeDetails}
             onEdit={handleEditNode}
+            onUpdateNode={handleUpdateNode}
           />
         )}
 
@@ -283,10 +302,15 @@ const FlowVisualizerContent = ({
 }
 
 // Componente contenedor que proporciona el contexto de ReactFlow
-const FlowVisualizer = (props) => {
+const FlowVisualizer = ({ flowData, onWidgetSelect, selectedWidget, onNodeUpdate }) => {
   return (
     <ReactFlowProvider>
-      <FlowVisualizerContent {...props} />
+      <FlowVisualizerContent 
+        flowData={flowData}
+        onWidgetSelect={onWidgetSelect}
+        selectedWidget={selectedWidget}
+        onNodeUpdate={onNodeUpdate}
+      />
     </ReactFlowProvider>
   )
 }

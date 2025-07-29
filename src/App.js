@@ -77,6 +77,42 @@ const App = () => {
     }
   };
 
+  const handleNodeUpdate = (updatedNode) => {
+    if (!flowData) return;
+
+    // Encontrar el widget correspondiente al nodo actualizado
+    const updatedFlowData = { ...flowData };
+    const widgetIndex = updatedFlowData.states.findIndex(state => state.name === updatedNode.id);
+    
+    if (widgetIndex !== -1) {
+      // Actualizar las propiedades y transiciones del widget
+      updatedFlowData.states[widgetIndex] = {
+        ...updatedFlowData.states[widgetIndex],
+        properties: updatedNode.data.properties,
+        transitions: updatedNode.data.transitions
+      };
+      
+      setFlowData(updatedFlowData);
+      
+      // Si es un flujo guardado, actualizar automáticamente
+      if (currentFlowId) {
+        try {
+          localStorageService.updateFlow(currentFlowId, updatedFlowData);
+          addAlert({
+            type: 'success',
+            message: 'Cambios guardados automáticamente',
+          });
+        } catch (error) {
+          console.error('Error al actualizar flujo:', error);
+          addAlert({
+            type: 'error',
+            message: 'Error al guardar los cambios',
+          });
+        }
+      }
+    }
+  };
+
   const handleExportFlow = () => {
     if (!flowData || !selectedFlow) return;
     exportFlowToJson(flowData, selectedFlow);
@@ -387,6 +423,7 @@ const App = () => {
             flowData={flowData} 
             onWidgetSelect={handleWidgetSelect} 
             selectedWidget={selectedWidget}
+            onNodeUpdate={handleNodeUpdate}
           />
         </div>
       </div>
