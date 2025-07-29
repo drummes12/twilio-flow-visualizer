@@ -1,5 +1,5 @@
 {
-  "name": "pg-studio-flow-visualizer",
+  "name": "twilio-flow-visualizer",
   "version": "0.1.0",
   "description": "Visualizador y editor de Twilio Studio Flows directamente en el editor de código",
   "type": "module",
@@ -18,7 +18,7 @@
     "visualizer",
     "editor"
   ],
-  "author": "",
+  "author": "drummes12",
   "license": "MIT",
   "dependencies": {
     "@uiw/react-json-view": "2.0.0-alpha.33",

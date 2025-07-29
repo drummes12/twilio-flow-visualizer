@@ -18,7 +18,7 @@ Esta extensión permite visualizar y editar los flujos de Twilio Studio directam
 3. Navega a la carpeta del plugin e instala las dependencias:
 
 ```bash
-cd plugins/pg-studio-flow-visualizer
+cd twilio-flow-visualizer
 npm install
 ```
 
@@ -46,7 +46,7 @@ npm start
 ## Estructura del proyecto
 
 ```
-pg-studio-flow-visualizer/
+twilio-flow-visualizer/
 ├── src/
 │   ├── components/       # Componentes React
 │   ├── utils/            # Utilidades y funciones auxiliares
@@ -68,7 +68,7 @@ pg-studio-flow-visualizer/
 
 ## Contribución
 
-Si deseas contribuir a este proyecto, por favor:
+Este proyecto está abierto a contribuciones de la comunidad. Si deseas contribuir:
 
 1. Haz un fork del repositorio
 2. Crea una rama para tu característica (`git checkout -b feature/nueva-caracteristica`)
@@ -76,6 +76,24 @@ Si deseas contribuir a este proyecto, por favor:
 4. Haz push a la rama (`git push origin feature/nueva-caracteristica`)
 5. Abre un Pull Request
 
+### Tipos de contribuciones bienvenidas
+
+- Corrección de errores
+- Nuevas características
+- Mejoras en la documentación
+- Optimizaciones de rendimiento
+- Traducciones
+
 ## Licencia
 
-Este proyecto está licenciado bajo la Licencia MIT - ver el archivo LICENSE para más detalles.
+Este proyecto está licenciado bajo la **Licencia MIT**. Esto significa que:
+
+- ✅ Puedes usar, modificar y distribuir el código libremente
+- ✅ Puedes usarlo en proyectos comerciales
+- ✅ Puedes crear trabajos derivados
+- ⚠️ **Debes incluir el aviso de copyright y la licencia en todas las copias**
+- ⚠️ El software se proporciona "tal como está", sin garantías
+
+**Autor original**: drummes12
+
+Ver el archivo [LICENSE](LICENSE) para más detalles completos.
